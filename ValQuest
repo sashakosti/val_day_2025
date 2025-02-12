@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квест по Петербургу</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .location {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            color: white;
+        }
+        .forest {
+            background: url('https://source.unsplash.com/800x600/?forest') center/cover;
+        }
+        .modern {
+            background: url('https://source.unsplash.com/800x600/?architecture') center/cover;
+        }
+        .park {
+            background: url('https://source.unsplash.com/800x600/?greece,statue') center/cover;
+        }
+        .cozy {
+            background: url('https://source.unsplash.com/800x600/?library,cafe') center/cover;
+        }
+        .street {
+            background: url('https://source.unsplash.com/800x600/?graffiti,urban') center/cover;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="location forest">
+        <h1>Лесная</h1>
+        <p>"Где холодный металл встречает зелень, ищи отражение правды. Там, где тени рассказывают истории, найдёшь путь дальше."</p>
+        <a href="chernyshevskaya.html" class="btn">Далее</a>
+    </div>
+    <div class="location modern">
+        <h1>Чернышевская</h1>
+        <p>"Место, где слова бессмертны, но говорят шёпотом. Открой страницу, найди след."</p>
+        <a href="tavrichesky.html" class="btn">Далее</a>
+    </div>
+    <div class="location park">
+        <h1>Таврический сад</h1>
+        <p>"Где вода неподвижна, а камни помнят прошлое, секрет ждёт под корнями."</p>
+        <a href="podpisnye.html" class="btn">Далее</a>
+    </div>
+    <div class="location cozy">
+        <h1>Подписные издания</h1>
+        <p>"Слова бессмертны, но лишь одна книга хранит ключ. Найди заголовок, где скрывается имя шпиона."</p>
+        <a href="slurp.html" class="btn">Далее</a>
+    </div>
+    <div class="location street">
+        <h1>Slurp Ramen</h1>
+        <p>"Ты был на шаг впереди, но ответ ждал тебя с самого начала. Вернись к первому посланию – и сложи пазл."</p>
+    </div>
+</body>
+</html>

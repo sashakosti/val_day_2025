@@ -52,23 +52,32 @@
         <p>Следуя по подсказкам, ты сможешь разгадать тайну и найти финальное послание!</p>
         
         <button id="btn1" class="btn" onclick="goTo('kamenny_shepot.html')">Каменный Шепот</button>
-        <button id="btn2" class="btn" onclick="goTo('zhelezny_put.html')" disabled>Железный Путь</button>
-        <button id="btn3" class="btn" onclick="goTo('sady_vremeni.html')" disabled>Сады Времени</button>
-        <button id="btn4" class="btn" onclick="goTo('lampovaya_chitalka.html')" disabled>Ламповая Читалка</button>
-        <button id="btn5" class="btn" onclick="goTo('yaponsky_perekrestok.html')" disabled>Японский Перекрёсток</button>
+        <button id="btn2" class="btn" disabled onclick="goTo('zhelezny_put.html')">Железный Путь</button>
+        <button id="btn3" class="btn" disabled onclick="goTo('sady_vremeni.html')">Сады Времени</button>
+        <button id="btn4" class="btn" disabled onclick="goTo('lampovaya_chitalka.html')">Ламповая Читалка</button>
+        <button id="btn5" class="btn" disabled onclick="goTo('yaponsky_perekrestok.html')">Японский Перекрёсток</button>
     </div>
     
     <script>
         function goTo(page) {
-            localStorage.setItem(page, 'unlocked');
+            localStorage.setItem(page, 'true');
             window.location.href = page;
         }
 
         function checkProgress() {
-            if (localStorage.getItem('kamenny_shepot.html')) document.getElementById('btn2').disabled = false;
-            if (localStorage.getItem('zhelezny_put.html')) document.getElementById('btn3').disabled = false;
-            if (localStorage.getItem('sady_vremeni.html')) document.getElementById('btn4').disabled = false;
-            if (localStorage.getItem('lampovaya_chitalka.html')) document.getElementById('btn5').disabled = false;
+            const pages = [
+                'kamenny_shepot.html',
+                'zhelezny_put.html',
+                'sady_vremeni.html',
+                'lampovaya_chitalka.html',
+                'yaponsky_perekrestok.html'
+            ];
+
+            pages.forEach((page, index) => {
+                if (localStorage.getItem(pages[index]) === 'true' || index === 0) {
+                    document.getElementById(`btn${index + 1}`).disabled = false;
+                }
+            });
         }
 
         checkProgress();

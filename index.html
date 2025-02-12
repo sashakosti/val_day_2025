@@ -4,82 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine Quest</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            padding: 20px;
-            background: url('https://images.unsplash.com/photo-1521295121783-8a321d551ad2') no-repeat center center/cover;
-            color: white;
-        }
-        .container {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        .btn {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 200px;
-            border: 1px solid white;
-            transition: background 0.3s;
-        }
-        .btn:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-        .btn:disabled {
-            background: rgba(255, 255, 255, 0.1);
-            cursor: default;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/styles/main.css">
 </head>
 <body>
     <div class="container">
         <h1>Valentine Quest</h1>
-        <p>В один из туманных вечеров ты получил загадочное письмо. В нём — фрагмент старинной карты и записка с таинственным символом...</p>
-        <p>Следуя по подсказкам, ты сможешь разгадать тайну и найти финальное послание!</p>
+        <p class="fade-in">В один из туманных вечеров ты получил загадочное письмо. В нём — фрагмент старинной карты и записка с таинственным символом...</p>
+        <p class="fade-in">Следуя по подсказкам, ты сможешь разгадать тайну и найти финальное послание!</p>
         
-        <button id="btn1" class="btn" onclick="goTo('kamenny_shepot.html')">Каменный Шепот</button>
-        <button id="btn2" class="btn" disabled onclick="goTo('zhelezny_put.html')">Железный Путь</button>
-        <button id="btn3" class="btn" disabled onclick="goTo('sady_vremeni.html')">Сады Времени</button>
-        <button id="btn4" class="btn" disabled onclick="goTo('lampovaya_chitalka.html')">Ламповая Читалка</button>
-        <button id="btn5" class="btn" disabled onclick="goTo('yaponsky_perekrestok.html')">Японский Перекрёсток</button>
+        <button id="btn1" class="btn" onclick="goTo('levels/kamenny_shepot.html')">Каменный Шепот</button>
+        <button id="btn2" class="btn" disabled onclick="goTo('levels/zhelezny_put.html')">Железный Путь</button>
+        <button id="btn3" class="btn" disabled onclick="goTo('levels/sady_vremeni.html')">Сады Времени</button>
+        <button id="btn4" class="btn" disabled onclick="goTo('levels/lampovaya_chitalka.html')">Ламповая Читалка</button>
+        <button id="btn5" class="btn" disabled onclick="goTo('levels/yaponsky_perekrestok.html')">Японский Перекрёсток</button>
     </div>
     
     <script>
-        function goTo(page) {
-            localStorage.setItem(page, 'true');
-            window.location.href = page;
+        function goTo(level) {
+            let unlockedLevels = JSON.parse(localStorage.getItem('unlockedLevels')) || [];
+            let currentIndex = ['kamenny_shepot.html', 'zhelezny_put.html', 'sady_vremeni.html', 'lampovaya_chitalka.html', 'yaponsky_perekrestok.html'].indexOf(level.split('/').pop());
+            if (!unlockedLevels.includes(currentIndex + 1)) {
+                unlockedLevels.push(currentIndex + 1);
+                localStorage.setItem('unlockedLevels', JSON.stringify(unlockedLevels));
+            }
+            window.location.href = level;
         }
 
-        function checkProgress() {
-            const pages = [
-                'kamenny_shepot.html',
-                'zhelezny_put.html',
-                'sady_vremeni.html',
-                'lampovaya_chitalka.html',
-                'yaponsky_perekrestok.html'
-            ];
-
-            pages.forEach((page, index) => {
-                if (localStorage.getItem(pages[index]) === 'true' || index === 0) {
-                    document.getElementById(`btn${index + 1}`).disabled = false;
-                }
-            });
+        function loadProgress() {
+            let unlockedLevels = JSON.parse(localStorage.getItem('unlockedLevels')) || [];
+            for (let i = 0; i < unlockedLevels.length; i++) {
+                document.getElementById('btn' + (unlockedLevels[i] + 1)).disabled = false;
+            }
         }
 
-        checkProgress();
+        window.onload = loadProgress;
     </script>
 </body>
+</html>
+
+<style>
+    .fade-in {
+        opacity: 0;
+        animation: fadeIn ease-in 1s forwards;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>

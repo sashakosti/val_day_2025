@@ -1,4 +1,4 @@
-body {
+html, body {
     font-family: 'Cormorant Garamond', serif;
     background-color: #15448acc; /* Темно-синий фон */
     color: #000000; /* Золотистый оттенок текста */
@@ -89,3 +89,11 @@ button {
 button:hover {
     background-color: #e6c200;
 }
+
+@media (max-width: 768px) {
+    .bg {
+        background-size: contain; /* или попробуй cover */
+        min-height: 100vh;
+    }
+}
+

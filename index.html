@@ -7,47 +7,25 @@
     <link rel="stylesheet" href="assets/css/levels.css">
     <link rel="icon" type="image/x-icon" href="assets/icons/icons8.png">
 </head>
+<script src="passwords.js"></script>
+<script src="script.js"></script>
 <body style="background: url('assets/images/main_bg.jpg') no-repeat center center/cover;"></body>
 <body>
     <div class="blur-container">
         <div class="text-container">
         <h1>Rilinoth Quest</h1>
         <p class="fade-in">Следуя по подсказкам, ты сможешь разгадать тайну и найти финальное послание!</p>
-        
-        <button id="btn1" class="btn" onclick="goTo('levels/kamenny_shepot.html')">Шепот Камня</button>
-        <button id="btn2" class="btn" disabled onclick="goTo('levels/zhelezny_put.html')">Железный Путь</button>
-        <button id="btn3" class="btn" disabled onclick="goTo('levels/sady_vremeni.html')">Сад Времени</button>
-        <button id="btn4" class="btn" disabled onclick="goTo('levels/lampovaya_chitalka.html')">Главная библиотека</button>
-        <button id="btn5" class="btn" disabled onclick="goTo('levels/yaponsky_perekrestok.html')">Японский Перекрёсток</button>
+        <button class="level-button" data-level="level1" id="level1">Каменный шёпот</button>
+        <button class="level-button" data-level="level2" id="level2">Железный путь</button>
+        <button class="level-button" data-level="level3" id="level3">Сады Времени</button>
+        <button class="level-button" data-level="level4" id="level4">Ламповая Читалка</button>
+        <button class="level-button" data-level="level5" id="level5">Японский перекресток</button>
+
+        <button onclick="resetProgress()">Начать заново</button>
         </div>
     </div>
-    
-    <script>
-        function goTo(level) {
-            let unlockedLevels = JSON.parse(localStorage.getItem('unlockedLevels')) || [];
-            let currentIndex = ['kamenny_shepot.html', 'zhelezny_put.html', 'sady_vremeni.html', 'lampovaya_chitalka.html', 'yaponsky_perekrestok.html'].indexOf(level.split('/').pop());
-            if (!unlockedLevels.includes(currentIndex + 1)) {
-                unlockedLevels.push(currentIndex + 1);
-                localStorage.setItem('unlockedLevels', JSON.stringify(unlockedLevels));
-            }
-            window.location.href = level;
-        }
-
-        function loadProgress() {
-            let unlockedLevels = JSON.parse(localStorage.getItem('unlockedLevels')) || [];
-            for (let i = 0; i < unlockedLevels.length; i++) {
-                let btn = document.getElementById('btn' + (unlockedLevels[i] + 1));
-                if (btn) {
-                    btn.disabled = false;
-                }
-            }
-        }
-
-        window.onload = loadProgress;
-    </script>
 </body>
 </html>
-
 <style>
     .fade-in {
         opacity: 0;

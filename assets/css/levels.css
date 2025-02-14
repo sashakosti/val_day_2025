@@ -2,6 +2,7 @@ html, body {
     font-family: 'Cormorant Garamond', serif;
     background-color: #15448acc; /* Темно-синий фон */
     color: #000000; /* Золотистый оттенок текста */
+    min-height: 100vh; /* Минимум на весь экран */
     height: 100%;
     margin: 0;
     padding: 0;
@@ -29,7 +30,8 @@ html, body {
     background-color: #1c1c3c; /* Или другой цвет */
     padding: 20px; /* Добавляет отступы */
     margin-top: 20px; /* Опускает вниз */
-    border-radius: 15px; /* Скругляет углы */
+    border-radius: 20px !important; /* Скругляет углы */
+    overflow: hidden;
     text-align: center;
 }
 
@@ -54,7 +56,6 @@ html, body {
     max-width: 600px; /* Максимальная ширина текста */
 }
 
-
 h1, h2, h3 {
     color: #b9a221; /* Золотой цвет заголовков */
     text-shadow: 2px 2px 4px rgba(255, 217, 4, 0.633);
@@ -74,10 +75,12 @@ p {
 }
 
 .bg {
-    background-image: url('../images/main_bg.jpg'); /* проверь путь! */
+    background-image: url('../images/main_bg.jpg') no-repeat center center fixed; /* проверь путь! */
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* попробуй убрать, если фон странно себя ведёт */
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
     width: 100%;
 }
@@ -98,9 +101,9 @@ button:hover {
     background-color: #e6c200;
 }
 
-@media (max-width: 768px) {
+@media (max-width: "768px") {
     .bg {
-        background-size: contain; /* или попробуй cover */
+        background-size:cover; /* или попробуй cover */
         min-height: 100vh;
     }
 }

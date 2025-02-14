@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="assets/css/levels.css">
     <link rel="icon" type="image/x-icon" href="assets/icons/icons8.png">
 </head>
+<script src="passwords.js"></script>
+<script src="script.js"></script>
 <body style="background: url('assets/images/main_bg.jpg') no-repeat center center/cover;"></body>
 <body>
     <div class="blur-container">
@@ -21,33 +23,8 @@
         <button id="btn5" class="btn" disabled onclick="goTo('levels/yaponsky_perekrestok.html')">Пятая остановка</button>
         </div>
     </div>
-    
-    <script>
-        function goTo(level) {
-            let unlockedLevels = JSON.parse(localStorage.getItem('unlockedLevels')) || [];
-            let currentIndex = ['kamenny_shepot.html', 'zhelezny_put.html', 'sady_vremeni.html', 'lampovaya_chitalka.html', 'yaponsky_perekrestok.html'].indexOf(level.split('/').pop());
-            if (!unlockedLevels.includes(currentIndex + 1)) {
-                unlockedLevels.push(currentIndex + 1);
-                localStorage.setItem('unlockedLevels', JSON.stringify(unlockedLevels));
-            }
-            window.location.href = level;
-        }
-
-        function loadProgress() {
-            let unlockedLevels = JSON.parse(localStorage.getItem('unlockedLevels')) || [];
-            for (let i = 0; i < unlockedLevels.length; i++) {
-                let btn = document.getElementById('btn' + (unlockedLevels[i] + 1));
-                if (btn) {
-                    btn.disabled = false;
-                }
-            }
-        }
-
-        window.onload = loadProgress;
-    </script>
 </body>
 </html>
-
 <style>
     .fade-in {
         opacity: 0;

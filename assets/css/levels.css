@@ -25,6 +25,14 @@ html, body {
     display: inline-block;
 }
 
+.header-box {
+    background-color: #1c1c3c; /* Или другой цвет */
+    padding: 20px; /* Добавляет отступы */
+    margin-top: 20px; /* Опускает вниз */
+    border-radius: 15px; /* Скругляет углы */
+    text-align: center;
+}
+
 /* Фоновый контейнер (блюр) */
 .blur-container {
     position: absolute;
@@ -66,7 +74,7 @@ p {
 }
 
 .bg {
-    background-image: url('твой_фон.jpg'); /* проверь путь! */
+    background-image: url('../images/main_bg.jpg'); /* проверь путь! */
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* попробуй убрать, если фон странно себя ведёт */

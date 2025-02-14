@@ -16,7 +16,7 @@ body {
 }
 
 .text-box {
-    background: rgba(255, 255, 255, 0.2); /* Светлая плашка */
+    background: rgba(173, 17, 170, 0.457); /* Светлая плашка */
     backdrop-filter: blur(10px); /* Размытие фона */
     color: black;
     padding: 10px 20px;
@@ -24,13 +24,25 @@ body {
     display: inline-block;
 }
 
-
-.container {
+/* Фоновый контейнер (блюр) */
+.blur-container {
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    top: 50%;
+    transform: translate(-50%, -50%); /* Центрирование */
+    padding: 20px 40px; /* Размер области блюра */
+    background: rgba(0, 0, 0, 0.5); /* Затемнение */
+    backdrop-filter: blur(10px); /* Блюр */
+    border-radius: 10px; /* Скругление краёв */
+}
+
+/* Контейнер с текстом */
+.text-container {
+    position: relative;
+    color: white;
+    font-size: 20px;
     text-align: center;
+    max-width: 600px; /* Максимальная ширина текста */
 }
 
 
@@ -56,7 +68,8 @@ button {
     background-color: #ffd700;
     color: #0f1a2b;
     border: none;
-    padding: 10px 20px;
+    margin: 10px; /* Расстояние между кнопками */
+    padding: 10px 20px; /* Сделает их чуть приятнее на вид */
     font-size: 18px;
     border-radius: 5px;
     cursor: pointer;

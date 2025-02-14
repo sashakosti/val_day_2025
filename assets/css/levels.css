@@ -2,6 +2,7 @@ body {
     font-family: 'Cormorant Garamond', serif;
     background-color: #15448acc; /* Темно-синий фон */
     color: #000000; /* Золотистый оттенок текста */
+    height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -62,6 +63,15 @@ p {
     padding: 10px;
     font-family: 'Courier New', monospace;
     color: #f5e6c8;
+}
+
+.bg {
+    background-image: url('твой_фон.jpg'); /* проверь путь! */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* попробуй убрать, если фон странно себя ведёт */
+    min-height: 100vh;
+    width: 100%;
 }
 
 button {
